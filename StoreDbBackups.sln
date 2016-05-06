@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "StoreDbBackups", "StoreDbBackups\StoreDbBackups.fsproj", "{96C4D80A-7707-42FE-8BF2-FBA86FE8810A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96C4D80A-7707-42FE-8BF2-FBA86FE8810A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96C4D80A-7707-42FE-8BF2-FBA86FE8810A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96C4D80A-7707-42FE-8BF2-FBA86FE8810A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96C4D80A-7707-42FE-8BF2-FBA86FE8810A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs.gavea.local/gaveacollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = StoreDbBackups\\StoreDbBackups.fsproj
+		SccProjectName1 = StoreDbBackups
+		SccLocalPath1 = StoreDbBackups
+	EndGlobalSection
+EndGlobal

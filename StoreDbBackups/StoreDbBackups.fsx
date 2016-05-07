@@ -1,4 +1,10 @@
-﻿open System
+﻿// config
+let numberOfDaysToKeep = 1u
+let backupRootPath = "C:\Temp"
+let folderFormat = "yyyy-MM-dd"
+
+// script
+open System
 open System.IO
 
 type Result<'failure> = 
@@ -34,10 +40,6 @@ let deleteFolders deleteFolder foldersToDeletePaths =
     |> Seq.fold accumulateResult Success
 
 let deleteOldBackups deleteFolders getFoldersToDelete () = getFoldersToDelete() |> deleteFolders
-// config
-let numberOfDaysToKeep = 1u
-let backupRootPath = "C:\Temp"
-let folderFormat = "yyyy-MM-dd"
 // composição
 let getDaysToKeep' = getDaysToKeep numberOfDaysToKeep
 let getFoldersToDelete' = getFoldersToDelete getDaysToKeep' backupRootPath folderFormat

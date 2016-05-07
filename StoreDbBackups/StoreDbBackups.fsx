@@ -1,8 +1,8 @@
 ﻿open System
 open System.IO
 
-type Result<'success, 'failure> = 
-    | Success of 'success
+type Result<'failure> = 
+    | Success
     | Failure of 'failure
 
 let getDaysToKeep (numberOfDaysToKeep : uint32) () = 
@@ -19,7 +19,7 @@ let getFoldersToDelete getDaysToKeep backupRootPath (folderFormat : string) () =
 let deleteFolder folderPath = 
     try 
         Directory.Delete(folderPath, true)
-        Success()
+        Success
     with ex -> Failure ex.Message
 
 let deleteFolders deleteFolder foldersToDeletePaths = 
@@ -28,10 +28,10 @@ let deleteFolders deleteFolder foldersToDeletePaths =
         | Failure list, Failure error -> Failure(list @ [ error ])
         | Failure list, _ -> Failure list
         | _, Failure error -> Failure([ error ])
-        | Success _, Success _ -> Success()
+        | _ -> Success
     foldersToDeletePaths
     |> Seq.map deleteFolder
-    |> Seq.fold accumulateResult (Success())
+    |> Seq.fold accumulateResult Success
 
 let deleteOldBackups deleteFolders getFoldersToDelete () = getFoldersToDelete() |> deleteFolders
 // config

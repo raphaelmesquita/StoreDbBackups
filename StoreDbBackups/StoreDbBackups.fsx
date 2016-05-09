@@ -39,14 +39,18 @@ let deleteFolders deleteFolder foldersToDeletePaths =
     |> Seq.map deleteFolder
     |> Seq.fold accumulateResult Success
 
-let deleteOldBackups deleteFolders getFoldersToDelete () = getFoldersToDelete() |> deleteFolders
+let deleteOldBackups deleteFolders getFoldersToDelete () = async { return getFoldersToDelete() |> deleteFolders }
 // composição
 let getDaysToKeep' = getDaysToKeep numberOfDaysToKeep
 let getFoldersToDelete' = getFoldersToDelete getDaysToKeep' backupRootPath folderFormat
 let deleteFolders' = deleteFolders deleteFolder
 let deleteOldBackups' = deleteOldBackups deleteFolders' getFoldersToDelete'
 
-let storeBackupsAndCleanOldOnes deleteOldBackups copyFilesToBackupFolder notifyResult () = 
+let storeBackupsAndCleanOldOnes deleteOldBackups copyFilesToBackupFolder reportResult () = 
     [ deleteOldBackups()
       copyFilesToBackupFolder() ]
-    |> notifyResult
+    |> List.map reportResult
+    |> Async.Parallel
+    |> Async.RunSynchronously
+    |> ignore
+    
